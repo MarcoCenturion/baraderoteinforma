@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias por Categoría</title>
+</head>
+<body>
+    <h1>Noticias por Categoría</h1>
+    {% for categoria in categorias %}
+        <h2 id="{{ categoria.slug }}">{{ categoria.nombre }}</h2>
+        {% for noticia in categoria.noticia_set.all %}
+            <article>
+                <h3>{{ noticia.titulo }}</h3>
+                <p>{{ noticia.resumen }}</p>
+                <div>{{ noticia.contenido|safe }}</div>
+            </article>
+        {% empty %}
+            <p>No hay noticias en esta categoría.</p>
+        {% endfor %}
+    {% endfor %}
+</body>
+</html>
+
