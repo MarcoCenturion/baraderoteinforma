@@ -1,8 +1,10 @@
 from django.urls import path
-from .views import subir_noticia, lista_noticias
+from .views import listar_noticias, subir_noticia, detalle_noticia
+
+app_name = 'noticias'
 
 urlpatterns = [
+    path('', listar_noticias, name='listar_noticias'),
     path('subir/', subir_noticia, name='subir_noticia'),
-    path('', lista_noticias, name='lista_noticias'),
+    path('<int:id>/', detalle_noticia, name='detalle_noticia'),
 ]
-

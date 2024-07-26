@@ -4,5 +4,5 @@ from .models import Noticia
 class NoticiaForm(forms.ModelForm):
     class Meta:
         model = Noticia
-        fields = ['titulo', 'resumen', 'archivo_markdown', 'categoria']
+        fields = ['titulo', 'resumen', 'archivo_markdown','texto_markdown', 'categoria']
 

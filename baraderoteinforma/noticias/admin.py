@@ -1,11 +1,12 @@
 from django.contrib import admin
 from .models import Categoria, Noticia
 
-@admin.register(Categoria)
 class CategoriaAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'slug')
+    list_display = ('nombre', 'slug')  # Asegúrate de que 'slug' esté definido en el modelo Categoria
 
-@admin.register(Noticia)
 class NoticiaAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'categoria', 'resumen')
+
+admin.site.register(Categoria, CategoriaAdmin)
+admin.site.register(Noticia, NoticiaAdmin)
 

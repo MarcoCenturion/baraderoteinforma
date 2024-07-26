@@ -10,6 +10,10 @@
 <body>
     <img src="{% static 'img/cris1.jpg' %}" alt="Logo">
 	<h1>Noticias por Categoría</h1>
+    <nav>
+        <a href="{% url 'noticias:listar_noticias' %}">Listar Noticias</a>
+    </nav>
+
     {% for categoria in categorias %}
         <h2 id="{{ categoria.slug }}">{{ categoria.nombre }}</h2>
         {% for noticia in categoria.noticia_set.all %}
