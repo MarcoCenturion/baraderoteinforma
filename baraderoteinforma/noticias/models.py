@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.text import slugify
+import markdown2
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100)
@@ -16,11 +16,14 @@ class Categoria(models.Model):
 class Noticia(models.Model):
     titulo = models.CharField(max_length=200)
     resumen = models.TextField()
-    archivo_markdown = models.FileField(upload_to='markdown/', null=True, blank=True)
-    contenido = models.TextField(blank=True)
-    texto_markdown = models.TextField(blank=True)  # Campo adicional para el contenido Markdown como texto plano
+    contenido = models.TextField(null=True, blank=True)
+    archivo_texto = models.FileField(upload_to='textos/', null=True, blank=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+
+    def save(self, *args, **kwargs):
+        with open(self.archivo_texto.path, 'r', encoding='utf-8') as file:
+            self.contenido = file.read()
+            super().save(*args, **kwargs)
 
     def __str__(self):
         return self.titulo
-
