@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 import markdown2
 
 class Categoria(models.Model):
@@ -21,9 +22,21 @@ class Noticia(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
-        with open(self.archivo_texto.path, 'r', encoding='utf-8') as file:
-            self.contenido = file.read()
-            super().save(*args, **kwargs)
+        # Primero guardamos la instancia del modelo
+        super().save(*args, **kwargs)
+        
+        # Luego leemos el contenido del archivo si existe
+        if self.archivo_texto:
+            try:
+                with open(self.archivo_texto.path, 'r', encoding='utf-8') as file:
+                    self.contenido = file.read()
+            except FileNotFoundError:
+                print(f"Error: El archivo {self.archivo_texto.path} no se encontró.")
+            except IOError:
+                print(f"Error: No se pudo leer el archivo {self.archivo_texto.path}.")
+            
+            # Actualizamos la instancia del modelo con el contenido del archivo
+            super().save(update_fields=['contenido'])
 
     def __str__(self):
         return self.titulo

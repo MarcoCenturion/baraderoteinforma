@@ -28,26 +28,3 @@ def subir_noticia(request):
         form = NoticiaForm()
     return render(request, 'noticias/subir_noticia.html', {'form': form})
 
-'''
-def subir_noticia(request):
-    if request.method == 'POST':
-        noticia_form = NoticiaForm(request.POST, request.FILES)
-        if noticia_form.is_valid():
-            noticia = noticia_form.save()
-            archivo_path = noticia.archivo_markdown.path
-            if os.path.exists(archivo_path):
-                try:
-                    with open(archivo_path, 'r', encoding='utf-8') as file:
-                        # Procesar el archivo
-                        pass
-                except Exception as e:
-                    messages.error(request, f'Error al leer el archivo: {e}')
-                    return redirect('noticias:subir_noticia')
-            else:
-                messages.error(request, 'El archivo markdown no se encontró.')
-                return redirect('noticias:subir_noticia')
-            return redirect('noticias:listar_noticias')
-    else:
-        noticia_form = NoticiaForm()
-    return render(request, 'noticias/subir_noticia.html', {'form': noticia_form})
-'''
