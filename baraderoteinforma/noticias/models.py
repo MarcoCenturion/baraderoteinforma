@@ -29,7 +29,10 @@ class Noticia(models.Model):
         if self.archivo_texto:
             try:
                 with open(self.archivo_texto.path, 'r', encoding='utf-8') as file:
-                    self.contenido = file.read()
+                    markdown_content = file.read()
+                    # Convertir Markdown a HTML
+                    self.contenido = markdown2.markdown(markdown_content)
+                    
             except FileNotFoundError:
                 print(f"Error: El archivo {self.archivo_texto.path} no se encontró.")
             except IOError:
