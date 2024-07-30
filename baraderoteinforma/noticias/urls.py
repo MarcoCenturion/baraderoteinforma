@@ -5,6 +5,6 @@ app_name = 'noticias'
 
 urlpatterns = [
     path('', listar_noticias, name='listar_noticias'),
-    path('subir/', subir_noticia, name='subir_noticia'),
+    path('subir_noticias/', subir_noticia, name='subir_noticia'),
     path('<int:id>/', detalle_noticia, name='detalle_noticia'),
 ]

@@ -23,8 +23,7 @@ def subir_noticia(request):
                     texto = file.read()
                 noticia.contenido = texto
             noticia.save()
-            return redirect('listar_noticias')
+            return render(request, 'noticias/subir_noticia.html')
     else:
         form = NoticiaForm()
     return render(request, 'noticias/subir_noticia.html', {'form': form})
-

@@ -1,20 +1,14 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir Noticia</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <img src="{% static 'img/cris1.jpg' %}" alt="Logo">
-    <h1>Subir Noticia</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Subir</button>
-    </form>
-</body>
-</html>
+<!-- noticias/templates/noticias/subir_noticias.html -->
+{% extends "noticias/base.html" %}
+
+{% block title %}Subir Noticias{% endblock %}
+
+{% block content %}
+<h1>Subir Nueva Noticia</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Subir</button>
+</form>
+{% endblock %}
 

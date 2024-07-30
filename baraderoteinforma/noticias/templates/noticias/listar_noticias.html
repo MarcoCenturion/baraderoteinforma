@@ -1,14 +1,14 @@
-{% load static %}
+{% extends "noticias/base.html" %}
+{% block title %}Listar Noticias{% endblock %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noticias por Categoría</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <img src="{% static 'img/cris1.jpg' %}" alt="Logo">
 	<h1>Noticias por Categoría</h1>
     <nav>
         <a href="{% url 'noticias:listar_noticias' %}">Listar Noticias</a>
@@ -28,4 +28,4 @@
     {% endfor %}
 </body>
 </html>
-
+{% endblock %}
