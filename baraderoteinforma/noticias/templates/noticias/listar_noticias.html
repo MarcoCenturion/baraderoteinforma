@@ -19,6 +19,7 @@
         {% for noticia in categoria.noticia_set.all %}
             <article>
                 <h3>{{ noticia.titulo }}</h3>
+		<p><strong>Autor:</strong> {{ noticia.autor.username }} <strong>Fecha:</strong> {{noticia.fecha_creacion}}</p>
                 <p>{{ noticia.resumen }}</p>
                 <div>{{ noticia.contenido|safe }}</div>
             </article>

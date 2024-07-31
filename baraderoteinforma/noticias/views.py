@@ -4,6 +4,7 @@ from .models import Noticia, Categoria
 from .forms import NoticiaForm
 import markdown2
 import os
+from django.contrib.auth.decorators import login_required
 
 def listar_noticias(request):
     categorias = Categoria.objects.all()
@@ -13,17 +14,15 @@ def detalle_noticia(request, id):
     noticia = get_object_or_404(Noticia, id=id)
     return render(request, 'noticias/detalle.html', {'noticia': noticia})
 
+@login_required
 def subir_noticia(request):
     if request.method == 'POST':
         form = NoticiaForm(request.POST, request.FILES)
         if form.is_valid():
             noticia = form.save(commit=False)
-            if noticia.archivo_texto:
-                with open(noticia.archivo_texto.path, 'r', encoding='utf-8') as file:
-                    texto = file.read()
-                noticia.contenido = texto
+            noticia.autor = request.user
             noticia.save()
-            return render(request, 'noticias/subir_noticia.html')
+            return redirect('noticias/listar_noticias')
     else:
         form = NoticiaForm()
     return render(request, 'noticias/subir_noticia.html', {'form': form})
