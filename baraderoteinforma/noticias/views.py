@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.files.storage import FileSystemStorage
 from .models import Noticia, Categoria, Tag
 from .forms import NoticiaForm
@@ -12,6 +12,7 @@ def noticias_por_tag(request, slug):
     noticias = Noticia.objects.filter(tags=tag)
     categorias = Categoria.objects.all()
     tags = Tag.objects.all()
+    
     return render(request, 'noticias/listar_noticias.html', {
         'noticias': noticias,
         'categorias': categorias,
@@ -23,10 +24,14 @@ def listar_noticias(request):
     noticias = Noticia.objects.all()
     categorias = Categoria.objects.all()
     tags = Tag.objects.all()
+
+    ultimas_noticias = Noticia.objects.order_by('-fecha_creacion')[:5]
+
     return render(request, 'noticias/listar_noticias.html', {
         'noticias': noticias,
         'categorias': categorias,
         'tags': tags,
+        'ultimas_noticias': ultimas_noticias,
         'current_year': timezone.now().year,
     })
 

@@ -1,32 +1,39 @@
-{% extends "noticias/base.html" %}
-{% block title %}Listar Noticias{% endblock %}
-{% block content %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noticias por Categoría</title>
-</head>
-<body>
-	<h1>Noticias por Categoría</h1>
-    <nav>
-        <a href="{% url 'noticias:listar_noticias' %}">Listar Noticias</a>
-    </nav>
+{% extends 'noticias/base.html' %}
 
-    {% for categoria in categorias %}
-        <h2 id="{{ categoria.slug }}">{{ categoria.nombre }}</h2>
-        {% for noticia in categoria.noticia_set.all %}
-            <article>
-                <h3>{{ noticia.titulo }}</h3>
-		<p><strong>Autor:</strong> {{ noticia.autor.username }} <strong>Fecha:</strong> {{noticia.fecha_creacion}}</p>
-                <p>{{ noticia.resumen }}</p>
-                <div>{{ noticia.contenido|safe }}</div>
-            </article>
-        {% empty %}
-            <p>No hay noticias en esta categoría.</p>
-        {% endfor %}
-    {% endfor %}
-</body>
-</html>
+{% block content %}
+<div class="container" style="margin-top: 60px;">
+    <div class="row">
+        <!-- Columna Principal -->
+        <div class="col-md-8">
+            <h1>Noticias</h1>
+            <div class="noticias">
+                {% for noticia in noticias %}
+                    <div class="noticia">
+                        <h2>{{ noticia.titulo }}</h2>
+                        <p>{{ noticia.resumen }}</p>
+                        <p><strong>Categoría:</strong> {{ noticia.categoria.nombre }}</p>
+                        <p><strong>Fecha de creación:</strong> {{ noticia.fecha_creacion }}</p>
+                        <p><strong>Autor:</strong> {{ noticia.autor.username }}</p>
+                        <a href="{% url 'noticias:detalle_noticia' noticia.id %}">Leer más</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Columna de Sinopsis de Últimas Noticias -->
+        <div class="col-md-4">
+            <h2>Últimas Noticias</h2>
+            {% for noticia in ultimas_noticias %}
+                <div class="ultima-noticia">
+                    <h4>{{ noticia.titulo }}</h4>
+                    <p><small>{{ noticia.fecha_creacion }}</small></p>
+                    <p>{{ noticia.contenido|truncatewords:20 }}</p>
+                    <a href="{% url 'noticias:detalle_noticia' noticia.id %}">Leer más</a>
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}
+
