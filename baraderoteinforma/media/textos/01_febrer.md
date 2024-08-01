@@ -1,11 +1,3 @@
-```
- __  __                        ____           _              _             
-|  \/  | __ _ _ __ ___ ___    / ___|___ _ __ | |_ _   _ _ __(_) ___  _ __  
-| |\/| |/ _` | '__/ __/ _ \  | |   / _ \ '_ \| __| | | | '__| |/ _ \| '_ \ 
-| |  | | (_| | | | (_| (_) | | |__|  __/ | | | |_| |_| | |  | | (_) | | | |
-|_|  |_|\__,_|_|  \___\___/   \____\___|_| |_|\__|\__,_|_|  |_|\___/|_| |_|
-```
-
 ## Efemerides 01 de Febrero
 
 1524: en Londres, unos 20 000 pobladores abandonan sus hogares y se dirigen a terrenos más altos, en espera de la inundación que producirá el fin del mundo. Fue profetizada en junio de 1523 por los más prestigiosos astrólogos de Inglaterra.  Nadie puso en duda en aquel entonces la veracidad de los hechos, tampoco nunca nadie dudó que los reyes europeos desciendan de Dios, o el emperador chino sea un dragón. 

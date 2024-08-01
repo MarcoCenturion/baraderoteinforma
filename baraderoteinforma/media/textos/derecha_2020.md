@@ -1,11 +1,3 @@
-```
- __  __                      ____           _              _             
-|  \/  | __ _ _ __ ___ ___  / ___|___ _ __ | |_ _   _ _ __(_) ___  _ __  
-| |\/| |/ _` | '__/ __/ _ \| |   / _ \ '_ \| __| | | | '__| |/ _ \| '_ \ 
-| |  | | (_| | | | (_| (_) | |__|  __/ | | | |_| |_| | |  | | (_) | | | |
-|_|  |_|\__,_|_|  \___\___/ \____\___|_| |_|\__|\__,_|_|  |_|\___/|_| |_|
-```
-
 El peronismo, o esa corriente de pensamiento que llamamos así, se comporta dentro de la sociedad como un *virus* en un cuerpo, su ansia proselitista observa la misma lógica que las iglesias, capturando a la feligresía con *mística* por sobre argumentos, para luego, concluída esta primera etapa de la captura del alma del individuo, poder pasar al paso siguiente, salir de la mística / mítica para entrar a la etapa politica.  
 
 Esto es así por un motivo importante, el individuo no asumido como peronista no podrá ver los argumentos, los números duros, puesto que tiene un "antivirus" ideológico que no dejará que lo entienda, por ello, estos argumentos deben ingresar por el lado del arte, de los sentimientos ligados a este.  Algo tiene que ver la reformulación que hiciera Gardner de los conceptos **"Verdad, Bondad y Belleza"**

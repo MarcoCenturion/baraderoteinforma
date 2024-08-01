@@ -12,7 +12,7 @@ def noticias_por_tag(request, slug):
     noticias = Noticia.objects.filter(tags=tag)
     categorias = Categoria.objects.all()
     tags = Tag.objects.all()
-    return render(request, 'listar_noticias.html', {
+    return render(request, 'noticias/listar_noticias.html', {
         'noticias': noticias,
         'categorias': categorias,
         'tags': tags,
@@ -23,7 +23,7 @@ def listar_noticias(request):
     noticias = Noticia.objects.all()
     categorias = Categoria.objects.all()
     tags = Tag.objects.all()
-    return render(request, 'listar_noticias.html', {
+    return render(request, 'noticias/listar_noticias.html', {
         'noticias': noticias,
         'categorias': categorias,
         'tags': tags,
