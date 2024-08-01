@@ -14,6 +14,15 @@ def detalle_noticia(request, id):
     noticia = get_object_or_404(Noticia, id=id)
     return render(request, 'noticias/detalle.html', {'noticia': noticia})
 
+def noticias_por_categoria(request, slug):
+    categoria = Categoria.objects.get(slug=slug)
+    noticias = Noticia.objects.filter(categoria=categoria)
+    categorias = Categoria.objects.all()
+    return render(request, 'listar_noticias.html', {
+        'noticias': noticias,
+        'categorias': categorias,
+        'categoria_actual': categoria
+    })
 @login_required
 def subir_noticia(request):
     if request.method == 'POST':
