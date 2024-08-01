@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Mi Sitio de Noticias{% endblock %}</title>
+    <title>{% block title %}Baradero te informa{% endblock %}</title>
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
@@ -15,9 +15,10 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <!-- Logo -->
-                <img src="{% static 'images/maradona1.png' %}" alt="Logo" width="40" height="40" class="d-inline-block align-top">
-                Mi Sitio de Noticias
+                <img src="{% static 'images/nestor1.png' %}" alt="Logo" width="50" height="50" class="d-inline-block align-top">
+                Baradero te Informa
             </a>
+            <h5><small>Toda la información, en todo momento</small></h5>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,6 +44,25 @@
         {% block content %}
         {% endblock %}
     </div>
+
+      <!-- Footer -->
+    <footer class="bg-dark text-white mt-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Nube de Publicaciones</h5>
+                    <div class="tag-cloud">
+                        {% for tag in tags %}
+                            <a href="{% url 'noticias:tag' tag.slug %}" class="badge bg-secondary">{{ tag.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; {{ current_year }} Mi Sitio de Noticias. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
 
