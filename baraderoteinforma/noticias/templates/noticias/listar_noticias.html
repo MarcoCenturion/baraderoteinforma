@@ -13,7 +13,7 @@
                         <p>{{ noticia.resumen }}</p>
                         <p><strong>Categoría:</strong> {{ noticia.categoria.nombre }}</p>
                         <p><strong>Fecha de creación:</strong> {{ noticia.fecha_creacion }}</p>
-                        <p><strong>Autor:</strong> {{ noticia.autor.username }}</p>
+			<p><strong>Autor:</strong> {{ noticia.nombre_usuario }} {{ noticia.apellido_usuario }}</p>
                         <a href="{% url 'noticias:detalle_noticia' noticia.id %}">Leer más</a>
                     </div>
                 {% endfor %}

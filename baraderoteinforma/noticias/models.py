@@ -35,7 +35,8 @@ class Noticia(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, related_name='noticias')
     fecha_creacion = models.DateTimeField(auto_now_add=True)
-    autor = models.ForeignKey(User, on_delete=models.CASCADE, default=1)  # Asegúrate de que el usuario con ID 1 exista
+    nombre_usuario = models.CharField(max_length=100)
+    apellido_usuario = models.CharField(max_length=100)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

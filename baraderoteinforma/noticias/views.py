@@ -55,7 +55,8 @@ def subir_noticia(request):
         form = NoticiaForm(request.POST, request.FILES)
         if form.is_valid():
             noticia = form.save(commit=False)
-            noticia.autor = request.user
+            nombre_usuario=request.user.first_name,
+            apellido_usuario=request.user.last_name,
             noticia.save()
             return redirect('noticias/listar_noticias')
     else:

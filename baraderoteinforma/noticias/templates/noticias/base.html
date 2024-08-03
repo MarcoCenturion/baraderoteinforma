@@ -5,12 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Baradero te informa{% endblock %}</title>
+
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+
+  <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <!-- Enlace a Font Awesome (opcional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
-    <!-- Cabecera con logo y título -->
+<!-- Cabecera con logo y título -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
        <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -25,21 +33,6 @@
     </div>
     </nav>
 
-    <!-- Menú de categorías -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    {% for categoria in categorias %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'noticias:categoria' categoria.slug %}">{{ categoria.nombre }}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <div class="container mt-4">
         {% block content %}
         {% endblock %}
@@ -47,20 +40,28 @@
 
       <!-- Footer -->
     <footer class="bg-dark text-white mt-5">
-        <div class="container py-4">
+        <div class="container py:-4">
             <div class="row">
                 <div class="col-md-6">
-                    <h5>Nube de Publicaciones</h5>
+                    <h5>Los temas candentes</h5>
                     <div class="tag-cloud">
                         {% for tag in tags %}
                             <a href="{% url 'noticias:tag' tag.slug %}" class="badge bg-secondary">{{ tag.name }}</a>
                         {% endfor %}
-                    </div>
+                   </div>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p>&copy; {{ current_year }} Mi Sitio de Noticias. Todos los derechos reservados.</p>
-                </div>
-            </div>
+	<p>&copy; {{ current_year }} Baradero te Informa. Todos los derechos reservados.</p>
+	<div class="container">
+        <p>Buscanos en nuestras redes</p>
+	<a href="https://www.youtube.com/aulavirtual" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me/3329554222" class="text-white me-3"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/Baraderoteinforma" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/baraderoteinforma" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com/bti" class="text-white"><i class="fab fa-twitter"></i></a>
+        </div>
+	</div>
+        </div>
         </div>
     </footer>
 </body>
